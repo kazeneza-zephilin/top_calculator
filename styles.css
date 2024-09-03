@@ -1,41 +1,42 @@
-*{
-    background-color: bisque;
-    font-size: 20px;
-    font-weight: 600;
+* {
+  background-color: bisque;
+  font-size: 20px;
+  font-weight: 600;
 }
-#screen{
-    width: 330px;
-    height: 100px;
-    background-color: azure;
-    border-radius: 10px;
+#screen {
+  width: 330px;
+  height: 100px;
+  background-color: azure;
+  border-radius: 10px;
 }
-.calculator-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: auto;
-    gap: 3px;
-    width: 350px;
-    height: 550px;
-    border-radius: 15px;
-    background-color: darkgray;
+.calculator-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+  gap: 3px;
+  width: 350px;
+  height: 550px;
+  border-radius: 15px;
+  background-color: darkgray;
 }
-button{
-    height: 50px;
-    width: 70px;
-    background-color: white;
-    border-radius: 15px;
+button {
+  height: 50px;
+  width: 70px;
+  background-color: white;
+  border-radius: 15px;
 }
-.control-btn{
-    display: flex;
-    gap: 15px;
-    margin-bottom: 0px;
-    background: darkgray;
+.control-btn {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 0px;
+  background: darkgray;
 }
-#clear,#delete{
-width: 140px;
+#clear,
+#delete {
+  width: 140px;
 }
- #delete{
-    background-color: lightcoral;
- }
+#delete {
+  background-color: lightcoral;
+}

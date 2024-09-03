@@ -1,9 +1,12 @@
-const scrn = document.querySelector("#screen");
-const nine = document.querySelector("#nine");
-nine.addEventListener("click", addToScreen);
+const firstNUmber = parseInt(getInputArr()[0]);
+const secondNumber = parseInt(getInputArr()[2]);
+const operator = getInputArr()[1];
 
-const plus = document.querySelector("#plus");
-plus.addEventListener("click", addToScreen);
+const scrn = document.querySelector("#screen");
+const inputBtns = document.querySelectorAll(".input");
+for (let btn of inputBtns) {
+  btn.addEventListener("click", addToScreen);
+}
 
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", clearInput);
@@ -75,14 +78,13 @@ function clearInput() {
 function initializeSCreen() {
   scrn.textContent = getInput();
 }
-const inputArr = getInput().split("");
-
-const firstNUmber = parseInt(inputArr[0]);
-const secondNumber = parseInt(inputArr[2]);
-const operator = inputArr[1];
+function getInputArr() {
+  return getInput().split("");
+}
 
 function updateScreen(update) {
   scrn.textContent = "";
   scrn.textContent = update;
 }
+
 window.onload = initializeSCreen;
