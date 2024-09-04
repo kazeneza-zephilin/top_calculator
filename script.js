@@ -1,5 +1,3 @@
-
-
 const scrn = document.querySelector("#screen");
 const inputBtns = document.querySelectorAll(".input");
 for (let btn of inputBtns) {
@@ -11,45 +9,38 @@ clear.addEventListener("click", clearInput);
 
 const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
-  const inputArr = getInput().split('');
-
-  const firstNUmber = parseInt(inputArr[0]);
-  const secondNumber = parseInt(inputArr[2]);
-  const operator = inputArr[1];
-  const result = operate(firstNUmber, operator, secondNumber);
+  const result = operate();
   updateScreen(result);
 });
 
-function add(a, b) {
-  return a + b;
+function operate(){
+  const input = getInput();
+  const result = safeEval(input);
+  return result;
 }
 
-function substract(a, b) {
-  return a - b;
-}
-function multiply(a, b) {
-  return a * b;
-}
-function divide(a, b) {
-  return a / b;
-}
+function safeEval(expression) {
+  const operators = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+    "/": (a, b) => a / b,
+  };
 
-function operate(firstNumber, operator, secondNumber) {
-  let result;
+  const tokens = expression.match(/(\d+|\+|\-|\*|\/)/g);
+  if (!tokens) {
+    throw new Error("Invalid expression");
+  }
+  let result = parseFloat(tokens[0]);
+  for (let i = 1; i < tokens.length; i += 2) {
+    const operator = tokens[i];
+    const nextValue = parseFloat(tokens[i + 1]);
 
-  switch (operator) {
-    case "+":
-      result = add(firstNumber, secondNumber);
-      break;
-    case "-":
-      result = substract(firstNumber, secondNumber);
-      break;
-    case "*":
-      result = multiply(firstNumber, secondNumber);
-      break;
-    case "/":
-      result = divi(firstNumber, secondNumber);
-      break;
+    if (operators[operator]) {
+      result = operators[operator](result, nextValue);
+    } else {
+      throw new Error("Invalid operator");
+    }
   }
   return result;
 }
@@ -57,7 +48,7 @@ function operate(firstNumber, operator, secondNumber) {
 function getInput() {
   const input = localStorage.getItem("screen-input");
   if (input === null) {
-    return '';
+    return "";
   }
   return input;
 }

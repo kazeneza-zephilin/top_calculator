@@ -4,10 +4,14 @@
   font-weight: 600;
 }
 #screen {
+  display: flex;
   width: 330px;
   height: 100px;
   background-color: azure;
   border-radius: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 43px;
 }
 .calculator-body {
   display: flex;
