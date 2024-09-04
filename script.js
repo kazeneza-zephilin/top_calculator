@@ -1,6 +1,4 @@
-const firstNUmber = parseInt(getInputArr()[0]);
-const secondNumber = parseInt(getInputArr()[2]);
-const operator = getInputArr()[1];
+
 
 const scrn = document.querySelector("#screen");
 const inputBtns = document.querySelectorAll(".input");
@@ -13,6 +11,11 @@ clear.addEventListener("click", clearInput);
 
 const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
+  const inputArr = getInput().split('');
+
+  const firstNUmber = parseInt(inputArr[0]);
+  const secondNumber = parseInt(inputArr[2]);
+  const operator = inputArr[1];
   const result = operate(firstNUmber, operator, secondNumber);
   updateScreen(result);
 });
@@ -54,7 +57,7 @@ function operate(firstNumber, operator, secondNumber) {
 function getInput() {
   const input = localStorage.getItem("screen-input");
   if (input === null) {
-    return;
+    return '';
   }
   return input;
 }
@@ -77,9 +80,6 @@ function clearInput() {
 
 function initializeSCreen() {
   scrn.textContent = getInput();
-}
-function getInputArr() {
-  return getInput().split("");
 }
 
 function updateScreen(update) {
