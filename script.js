@@ -13,6 +13,19 @@ equal.addEventListener("click", () => {
   updateScreen(result);
 });
 
+const del = document.querySelector("#delete");
+del.addEventListener('click', () =>{
+  if (!scrn.textContent === ''){
+    scrn.textContent.slice(-1);
+  }
+})
+function removeFromScreen(string){
+  if (!scrn.textContent === ''){
+    scrn.textContent.slice(-1);
+  }
+}
+
+
 function operate() {
   const input = getInput();
   const result = safeEval(input);
@@ -23,7 +36,7 @@ function safeEval(expression) {
   const operators = {
     "+": (a, b) => a + b,
     "-": (a, b) => a - b,
-    "x": (a, b) => a * b,
+    x: (a, b) => a * b,
     "/": (a, b) => a / b,
   };
 
@@ -37,8 +50,7 @@ function safeEval(expression) {
     const nextValue = parseFloat(tokens[i + 1]);
 
     if (operators[operator]) {
-      result =operators[operator](result, nextValue);
-      
+      result = operators[operator](result, nextValue);
     } else {
       throw new Error("Invalid operator");
     }
