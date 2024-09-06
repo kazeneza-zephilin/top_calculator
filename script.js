@@ -13,7 +13,7 @@ equal.addEventListener("click", () => {
   updateScreen(result);
 });
 
-function operate(){
+function operate() {
   const input = getInput();
   const result = safeEval(input);
   return result;
@@ -23,11 +23,11 @@ function safeEval(expression) {
   const operators = {
     "+": (a, b) => a + b,
     "-": (a, b) => a - b,
-    "*": (a, b) => a * b,
+    "x": (a, b) => a * b,
     "/": (a, b) => a / b,
   };
 
-  const tokens = expression.match(/(\d+|\+|\-|\*|\/)/g);
+  const tokens = expression.match(/(\d+(\.\d+)?|\+|\-|\x|\/)/g);
   if (!tokens) {
     throw new Error("Invalid expression");
   }
@@ -37,7 +37,8 @@ function safeEval(expression) {
     const nextValue = parseFloat(tokens[i + 1]);
 
     if (operators[operator]) {
-      result = operators[operator](result, nextValue);
+      result =operators[operator](result, nextValue);
+      
     } else {
       throw new Error("Invalid operator");
     }
